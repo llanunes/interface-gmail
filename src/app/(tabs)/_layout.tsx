@@ -17,7 +17,7 @@ export function Layout() {
     Roboto_700Bold,
   })
 
-  if (fontsLoaded) {
+  if (!fontsLoaded) {
     return <Loading />
   }
 
