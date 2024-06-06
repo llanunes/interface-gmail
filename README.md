@@ -19,3 +19,7 @@ Criar src/app/(tabs)
 ```bash
  npx tailwindcss init
 ```
+
+```bash
+ expo run:ios || expo run:android
+```

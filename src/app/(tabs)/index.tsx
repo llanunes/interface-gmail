@@ -1,5 +1,6 @@
 import { Avatar } from '@/components/Avatar'
 import { Email } from '@/components/email'
+import { FloatButton } from '@/components/float-button'
 import { Input } from '@/components/input'
 import { MenuButton } from '@/components/menu-button'
 import { Emails } from '@/utils/emails'
@@ -20,10 +21,19 @@ export default function Home() {
         />
       </Input>
       <FlatList
+        scrollEnabled={true}
+        showsVerticalScrollIndicator={false}
         keyExtractor={item => item.id}
         data={Emails}
-        renderItem={({ item }) => <Email />}
+        renderItem={({ item }) => <Email data={item} />}
+        contentContainerClassName="gap-6"
+        ListHeaderComponent={() => (
+          <Text className="uppercase text-gray-300 text-sm font-subtitle mt-6">
+            Entrada
+          </Text>
+        )}
       />
+      <FloatButton icon="edit" />
     </View>
   )
 }

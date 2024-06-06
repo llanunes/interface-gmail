@@ -1,26 +1,28 @@
 import { View, Text } from 'react-native'
 import { Avatar } from './Avatar'
 import { MaterialIcons } from '@expo/vector-icons'
-import { colors } from '@/styles/colors'
+import { EmailDataProps } from '@/utils/emails'
 
-export function Email() {
+type EmailProps = {
+  data: EmailDataProps
+}
+
+export function Email({ data }: EmailProps) {
   return (
     <View className="w-full flex-row gap-4">
       <Avatar
         source={{
-          uri: 'https://img.freepik.com/vetores-premium/um-cachorro-de-desenho-animado-com-uma-coleira-que-diz-cachorrinho_198306-13.jpg',
+          uri: data.avatar,
         }}
       />
       <View className="flex-1">
         <View className="flex-row items-center gap-1">
-          <MaterialIcons
-            name="label-important"
-            size={16}
-            color={colors.yellow[600]}
-          />
+          {data.marker && (
+            <MaterialIcons name="label-important" size={16} color={'#FFFF00'} />
+          )}
 
           <Text className="text-lg font-subtitle text-gray-300 flex-1">
-            Larissa Nunes
+            {data.name}
           </Text>
           <Text className="text-sm font-body text-gray-300">16 de jan.</Text>
         </View>
@@ -29,7 +31,7 @@ export function Email() {
           numberOfLines={1}
           lineBreakMode="tail"
         >
-          Assunto do e-mail
+          {data.subject}
         </Text>
         <View className="flex-row items-center gap-4">
           <Text
@@ -37,9 +39,13 @@ export function Email() {
             numberOfLines={1}
             lineBreakMode="tail"
           >
-            Essa é a mensagem do e-mail
+            {data.message}
           </Text>
-          <MaterialIcons name="star" size={22} color={colors.blue[600]} />
+          <MaterialIcons
+            name={data.start ? 'star' : 'star-outline'}
+            size={22}
+            color={data.start ? 'yellow' : '#007FFF'}
+          />
         </View>
       </View>
     </View>

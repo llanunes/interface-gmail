@@ -1,4 +1,3 @@
-import { colors } from '@/styles/colors'
 import { ReactNode } from 'react'
 import { View, TextInput, TextInputProps } from 'react-native'
 
@@ -18,7 +17,7 @@ function InputField({ ...rest }: TextInputProps) {
   return (
     <TextInput
       className="flex-1 font-normal text-base text-white"
-      placeholderTextColor={colors.gray[400]}
+      placeholderTextColor={'#8b8b8b'}
       {...rest}
     />
   )
